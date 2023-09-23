@@ -1,3 +1,16 @@
 package com.fintech.fintech.service;
 
-public interface WeatherService { }
+import com.fintech.fintech.data.entity.Weather;
+import java.util.List;
+import java.util.Map;
+
+public interface WeatherService {
+
+    Double calculateAverageTemperature();
+
+    List<Weather> findAllByTemperatureGreaterThan(Double temperature);
+
+    Map<Long, Double> getIdsAndTemperatures();
+
+    Map<Double, List<Weather>> getAllWeathersByTemperature();
+}
