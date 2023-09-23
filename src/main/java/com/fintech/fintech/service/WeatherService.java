@@ -10,7 +10,7 @@ public interface WeatherService {
 
     List<Weather> findAllByTemperatureGreaterThan(Double temperature);
 
-    Map<Long, Double> getIdsAndTemperatures();
+    Map<Long, Double> getIdTemperatureMap();
 
-    Map<Double, List<Weather>> getAllWeathersByTemperature();
+    Map<Double, List<Weather>> getTemperatureWeathersMap();
 }

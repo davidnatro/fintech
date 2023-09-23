@@ -74,7 +74,7 @@ public class AppStarter {
     }
 
     private void handleToMapIdTemperatureRequest() {
-        Map<Long, Double> idsTemperatures = weatherService.getIdsAndTemperatures();
+        Map<Long, Double> idsTemperatures = weatherService.getIdTemperatureMap();
         idsTemperatures.forEach((key, value) -> {
             System.out.println("id: " + key + "; temperature: " + value);
         });
@@ -82,7 +82,7 @@ public class AppStarter {
     }
 
     private void handleToMapTemperatureWeatherListRequest() {
-        Map<Double, List<Weather>> temperatureWeathers = weatherService.getAllWeathersByTemperature();
+        Map<Double, List<Weather>> temperatureWeathers = weatherService.getTemperatureWeathersMap();
         temperatureWeathers.forEach((key, value) -> {
             System.out.print("temperature: " + key + "; weathers: ");
             value.forEach(w -> System.out.print(w.getRegionName() + "; "));

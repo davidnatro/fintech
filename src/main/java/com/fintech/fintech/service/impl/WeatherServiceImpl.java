@@ -31,14 +31,14 @@ public class WeatherServiceImpl implements WeatherService {
     }
 
     @Override
-    public Map<Long, Double> getIdsAndTemperatures() {
+    public Map<Long, Double> getIdTemperatureMap() {
         return weatherRepository.findAll()
                 .stream()
                 .collect(Collectors.toMap(Weather::getId, Weather::getTemperature));
     }
 
     @Override
-    public Map<Double, List<Weather>> getAllWeathersByTemperature() {
+    public Map<Double, List<Weather>> getTemperatureWeathersMap() {
         return weatherRepository.findAll()
                 .stream()
                 .collect(Collectors.groupingBy(Weather::getTemperature,
