@@ -102,7 +102,8 @@ public class AppStarter {
         }
 
         System.out.println("Regions with temperature greater than '" + inputTemperature + "' : ");
-        weatherService.findAllByTemperatureGreaterThan(temperature).forEach(System.out::println);
+        weatherService.findAllByTemperatureGreaterThan(temperature)
+                .forEach(System.out::println);
         System.out.println(RESULT_DELIMITER);
     }
 }
