@@ -10,5 +10,17 @@ public interface WeatherRepository {
 
     Optional<Weather> findById(Long id);
 
-    List<Weather> findAllByTemperatureGreaterThan(Double temperature);
+    Optional<Weather> findByName(String name);
+
+    Weather add(Weather weather);
+
+    Weather update(Weather weather);
+
+    boolean existsById(Long id);
+
+    boolean existsByName(String name);
+
+    void deleteById(Long id);
+
+    void deleteByName(String name);
 }
