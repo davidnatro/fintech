@@ -4,7 +4,6 @@ import com.fintech.fintech.data.component.WeatherDataComponent;
 import com.fintech.fintech.data.dto.WeatherDto;
 import com.fintech.fintech.data.entity.Weather;
 import com.fintech.fintech.service.WeatherService;
-import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
