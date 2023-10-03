@@ -1,0 +1,18 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: weather-application
+
+springdoc:
+  swagger-ui:
+    path: swagger.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus
