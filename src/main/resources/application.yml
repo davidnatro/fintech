@@ -11,15 +11,15 @@ application:
   weather-api:
     base-url: http://api.weatherapi.com/v1
     current-weather-uri: /current.json?lang={language}&q={city}&key={key}
-    api-key: e8c4123c9de04ef3afd50459230710
+    api-key: ${api.key}
     default-language: ru
 
 resilience4j:
   ratelimiter:
     instances:
       weather-api-limiter:
-        limit-for-period: 2
-        limit-refresh-period: 10s
+        limit-for-period: 1300
+        limit-refresh-period: 3600s
         timeout-duration: 0
 
 springdoc:
