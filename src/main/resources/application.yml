@@ -7,6 +7,21 @@ spring:
   application:
     name: weather-application
 
+application:
+  weather-api:
+    base-url: http://api.weatherapi.com/v1
+    current-weather-uri: /current.json?lang={language}&q={city}&key={key}
+    api-key: ${api.key}
+    default-language: ru
+
+resilience4j:
+  ratelimiter:
+    instances:
+      weather-api-limiter:
+        limit-for-period: 1300
+        limit-refresh-period: 3600s
+        timeout-duration: 0
+
 springdoc:
   swagger-ui:
     path: swagger.html
