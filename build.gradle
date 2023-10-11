@@ -30,6 +30,7 @@ dependencies {
 
 
     implementation 'io.micrometer:micrometer-registry-prometheus'
+    implementation group: 'commons-io', name: 'commons-io', version: project.apacheCommonIoVersion
     implementation group: 'io.github.resilience4j', name: 'resilience4j-spring-boot3', version: project.resilience4jVersion
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: project.springdocVersion
 
