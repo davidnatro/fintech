@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.fintech'
-version = '3.0'
+version = '4.0'
 
 repositories {
     mavenCentral()
@@ -26,8 +26,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
 
     implementation 'io.micrometer:micrometer-registry-prometheus'
+    implementation group: 'commons-io', name: 'commons-io', version: project.apacheCommonIoVersion
+    implementation group: 'io.github.resilience4j', name: 'resilience4j-spring-boot3', version: project.resilience4jVersion
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: project.springdocVersion
 
     compileOnly('org.projectlombok:lombok')
