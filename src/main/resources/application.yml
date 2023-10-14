@@ -6,21 +6,18 @@ server:
 spring:
   application:
     name: weather-application
-
-application:
-  weather-api:
-    base-url: http://api.weatherapi.com/v1
-    current-weather-uri: /current.json?lang={language}&q={city}&key={key}
-    api-key: ${api.key}
-    default-language: ru
-
-resilience4j:
-  ratelimiter:
-    instances:
-      weather-api-limiter:
-        limit-for-period: 1300
-        limit-refresh-period: 3600s
-        timeout-duration: 0
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:/data/db
+    username: h2
+    password: h2
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 4
+  h2:
+    console:
+      enabled: true
+      path: /db
 
 springdoc:
   swagger-ui:
