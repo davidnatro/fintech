@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class CommonExceptionAdvice {
 
+    //@ResponseStatus(HttpStatus.CONFLICT)
+
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
     public ExceptionModel handleAlreadyExistsException(IllegalArgumentException exception) {

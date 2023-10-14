@@ -8,16 +8,21 @@ spring:
     name: weather-application
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:/data/db
+    url: jdbc:h2:file:~/IdeaProjects/fintech/db;INIT=CREATE SCHEMA IF NOT EXISTS weather;
     username: h2
     password: h2
     hikari:
       minimum-idle: 2
       maximum-pool-size: 4
-  h2:
-    console:
-      enabled: true
-      path: /db
+      schema: weather
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+  liquibase:
+    change-log: classpath:db/migrations/liquibase-changelog.xml
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    default-schema: ${spring.datasource.hikari.schema}
 
 springdoc:
   swagger-ui:
