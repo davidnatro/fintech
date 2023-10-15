@@ -15,8 +15,8 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "weather_type", schema = "weather")
-@jakarta.persistence.Table(name = "weather_type", schema = "weather")
+@Table(name = "weather_types", schema = "weather")
+@jakarta.persistence.Table(name = "weather_types", schema = "weather")
 public class WeatherType {
 
     @Id

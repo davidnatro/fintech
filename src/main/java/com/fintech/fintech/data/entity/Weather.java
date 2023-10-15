@@ -3,6 +3,8 @@ package com.fintech.fintech.data.entity;
 import com.fintech.fintech.annotation.Table;
 import com.fintech.fintech.data.enums.TemperatureScale;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,6 +30,7 @@ public class Weather {
 
     private Double temperature;
 
+    @Enumerated(EnumType.STRING)
     private TemperatureScale scale;
 
     @ManyToOne
