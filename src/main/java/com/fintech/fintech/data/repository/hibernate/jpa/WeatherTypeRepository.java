@@ -1,4 +1,4 @@
-package com.fintech.fintech.data.repository;
+package com.fintech.fintech.data.repository.hibernate.jpa;
 
 import com.fintech.fintech.data.entity.WeatherType;
 import org.springframework.data.repository.CrudRepository;

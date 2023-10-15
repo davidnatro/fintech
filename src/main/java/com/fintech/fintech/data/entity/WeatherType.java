@@ -1,12 +1,10 @@
 package com.fintech.fintech.data.entity;
 
+import com.fintech.fintech.annotation.Table;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "weather_type", schema = "weather")
+@jakarta.persistence.Table(name = "weather_type", schema = "weather")
 public class WeatherType {
 
     @Id

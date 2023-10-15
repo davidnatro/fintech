@@ -5,6 +5,6 @@
 
   <include file="weather-types.xml" relativeToChangelogFile="true"/>
   <include file="city-weather-tables.xml" relativeToChangelogFile="true"/>
-  <include file="weather-types-filling.xml" relativeToChangelogFile="true"/>
+  <include file="data-filling.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

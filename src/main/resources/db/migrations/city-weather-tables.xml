@@ -23,6 +23,9 @@
       <column name="scale" type="varchar(64)">
         <constraints nullable="false"/>
       </column>
+      <column name="datetime" type="timestamp with time zone">
+        <constraints nullable="false"/>
+      </column>
       <column name="weather_type_id" type="bigint">
         <constraints foreignKeyName="fk__weather_types__id" referencedTableName="weather_types"
           referencedColumnNames="id" nullable="false"/>
