@@ -28,11 +28,12 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "city_weather",
             joinColumns = @JoinColumn(name = "city_id"),
-            inverseJoinColumns = @JoinColumn(name=  "weather_id"))
+            inverseJoinColumns = @JoinColumn(name = "weather_id"))
     private List<Weather> weathers = new LinkedList<>();
 }

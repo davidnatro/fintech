@@ -10,5 +10,7 @@ public interface JdbcDataComponent<T, ID> {
 
     void create(T object);
 
+    void update(ID id, T object);
+
     void deleteById(ID id);
 }
