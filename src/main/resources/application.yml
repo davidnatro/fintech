@@ -8,9 +8,9 @@ spring:
     name: weather-application
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:file:~/IdeaProjects/fintech/db;INIT=CREATE SCHEMA IF NOT EXISTS weather;DATABASE_TO_LOWER=true;
-    username: h2
-    password: h2
+    url: jdbc:h2:file:./db;INIT=CREATE SCHEMA IF NOT EXISTS weather;DATABASE_TO_LOWER=true;
+    username: ${h2.username}
+    password: ${h2.password}
     hikari:
       minimum-idle: 2
       maximum-pool-size: 4
