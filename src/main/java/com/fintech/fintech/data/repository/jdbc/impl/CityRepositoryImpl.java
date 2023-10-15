@@ -1,15 +1,16 @@
 package com.fintech.fintech.data.repository.jdbc.impl;
 
 import com.fintech.fintech.data.entity.City;
+import com.fintech.fintech.data.entity.Weather;
+import com.fintech.fintech.data.entity.WeatherType;
+import com.fintech.fintech.data.enums.TemperatureScale;
 import com.fintech.fintech.data.repository.jdbc.CrudRepository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.time.ZonedDateTime;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
 import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -23,55 +24,30 @@ public class CityRepositoryImpl extends CrudRepository<City, Long> {
     }
 
     @Override
-    public List<City> findAll() {
+    public City save(City object) {
         try (Connection connection = dataSource.getConnection()) {
-            List<City> cities = new LinkedList<>();
-            final String findAllQuery = "SELECT * FROM " + tableReference;
-            Statement statement = connection.createStatement();
-            if (statement.execute(findAllQuery)) {
-                ResultSet resultSet = statement.getResultSet();
-                while (resultSet.next()) {
-                    cities.add(mapFromResultSet(resultSet));
-                }
-            }
-            return cities;
-        } catch (SQLException exception) {
-            log.error("cannot perform find all operation -> message: '{}'", exception.getMessage());
-            return List.of();
-        }
-    }
-
-    @Override
-    public Optional<City> findById(Long id) {
-        try (Connection connection = dataSource.getConnection()) {
-            final String findByIdQuery = "SELECT * FROM " + tableReference + " c WHERE c.id=?";
-            PreparedStatement statement = connection.prepareStatement(findByIdQuery);
-            statement.setString(1, id.toString());
+            final String insertQuery = "INSERT INTO " + tableReference + " VALUES (?)";
+            PreparedStatement statement = connection.prepareStatement(insertQuery);
+            statement.setString(1, object.getName());
             if (statement.execute()) {
                 ResultSet resultSet = statement.getResultSet();
-                resultSet.next();
-                return Optional.of(mapFromResultSet(resultSet));
+                return mapFromResultSet(resultSet);
             }
-            return Optional.empty();
         } catch (SQLException exception) {
-            log.error("cannot perform find by id operation -> message: '{}'",
+            log.error("cannot perform delete by id operation -> message: '{}'",
                       exception.getMessage());
-            return Optional.empty();
         }
-    }
-
-    @Override
-    public City save(City object) {
         return null;
     }
 
     @Override
-    public void deleteById(Long aLong) {
-
+    protected City mapFromResultSet(ResultSet resultSet) throws SQLException {
+        return new City(resultSet.getLong("id"), resultSet.getString("name"), new LinkedList<>());
     }
 
-    @Override
-    protected City mapFromResultSet(ResultSet resultSet) throws SQLException {
-        return new City(resultSet.getLong("id"), resultSet.getString("name"), null);
+    private Weather mapWeatherFromResultSet(ResultSet resultSet) throws SQLException {
+        return new Weather(resultSet.getLong("id"), resultSet.getDouble("temperature"),
+                           TemperatureScale.valueOf(resultSet.getString("scale")),
+                           ZonedDateTime.parse(resultSet.getString("datetime")), new WeatherType());
     }
 }

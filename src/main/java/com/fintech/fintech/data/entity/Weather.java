@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import java.time.ZonedDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,8 @@ public class Weather {
 
     @Enumerated(EnumType.STRING)
     private TemperatureScale scale;
+
+    private ZonedDateTime dateTime;
 
     @ManyToOne
     @JoinColumn(name = "weather_type_id")

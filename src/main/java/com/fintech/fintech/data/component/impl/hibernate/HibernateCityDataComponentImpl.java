@@ -5,6 +5,7 @@ import com.fintech.fintech.data.entity.City;
 import com.fintech.fintech.data.repository.hibernate.CityRepository;
 import com.fintech.fintech.exception.AlreadyExistsException;
 import com.fintech.fintech.exception.NotFoundException;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -56,6 +57,7 @@ public class HibernateCityDataComponentImpl implements HibernateDataComponent<Ci
     }
 
     @Override
+    @Transactional
     public void deleteById(Long id) {
         cityRepository.deleteById(id);
     }

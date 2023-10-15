@@ -1,8 +1,12 @@
 package com.fintech.fintech.data.repository.jdbc;
 
 import com.fintech.fintech.annotation.Table;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import javax.sql.DataSource;
@@ -21,13 +25,54 @@ public abstract class CrudRepository<T, ID> {
         this.dataSource = dataSource;
     }
 
-    abstract public List<T> findAll();
+    public List<T> findAll() {
+        try (Connection connection = dataSource.getConnection()) {
+            List<T> cities = new LinkedList<>();
+            final String findAllQuery = "SELECT * FROM " + tableReference;
+            Statement statement = connection.createStatement();
+            if (statement.execute(findAllQuery)) {
+                ResultSet resultSet = statement.getResultSet();
+                while (resultSet.next()) {
+                    cities.add(mapFromResultSet(resultSet));
+                }
+            }
+            return cities;
+        } catch (SQLException exception) {
+            log.error("cannot perform find all operation -> message: '{}'", exception.getMessage());
+        }
+        return List.of();
+    }
 
-    abstract public Optional<T> findById(ID id);
+    public Optional<T> findById(ID id) {
+        try (Connection connection = dataSource.getConnection()) {
+            final String findByIdQuery = "SELECT * FROM " + tableReference + " c WHERE c.id=?";
+            PreparedStatement statement = connection.prepareStatement(findByIdQuery);
+            statement.setString(1, id.toString());
+            if (statement.execute()) {
+                ResultSet resultSet = statement.getResultSet();
+                resultSet.next();
+                return Optional.of(mapFromResultSet(resultSet));
+            }
+        } catch (SQLException exception) {
+            log.error("cannot perform find by id operation -> message: '{}'",
+                      exception.getMessage());
+        }
+        return Optional.empty();
+    }
 
     abstract public T save(T object);
 
-    abstract public void deleteById(ID id);
+    public void deleteById(ID id) {
+        try (Connection connection = dataSource.getConnection()) {
+            final String deleteByIdQuery = "DELETE FROM " + tableReference + " WHERE id=?";
+            PreparedStatement statement = connection.prepareStatement(deleteByIdQuery);
+            statement.setString(1, id.toString());
+            statement.execute();
+        } catch (SQLException exception) {
+            log.error("cannot perform delete by id operation -> message: '{}'",
+                      exception.getMessage());
+        }
+    }
 
     protected abstract T mapFromResultSet(ResultSet resultSet) throws SQLException;
 

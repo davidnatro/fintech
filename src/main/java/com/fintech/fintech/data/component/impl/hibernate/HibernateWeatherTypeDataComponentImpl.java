@@ -5,6 +5,7 @@ import com.fintech.fintech.data.entity.WeatherType;
 import com.fintech.fintech.data.repository.hibernate.WeatherTypeRepository;
 import com.fintech.fintech.exception.AlreadyExistsException;
 import com.fintech.fintech.exception.NotFoundException;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -57,6 +58,7 @@ public class HibernateWeatherTypeDataComponentImpl implements
     }
 
     @Override
+    @Transactional
     public void deleteById(Long id) {
         weatherTypeRepository.deleteById(id);
     }
