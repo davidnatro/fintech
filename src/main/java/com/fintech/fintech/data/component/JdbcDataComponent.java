@@ -2,7 +2,7 @@ package com.fintech.fintech.data.component;
 
 import java.util.List;
 
-public interface DataComponent<T, ID> {
+public interface JdbcDataComponent<T, ID> {
 
     List<T> findAll();
 

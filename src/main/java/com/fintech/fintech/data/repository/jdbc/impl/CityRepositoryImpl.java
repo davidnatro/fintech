@@ -16,9 +16,9 @@ import org.springframework.stereotype.Repository;
 
 @Slf4j
 @Repository
-public class CityRepository extends CrudRepository<City, Long> {
+public class CityRepositoryImpl extends CrudRepository<City, Long> {
 
-    public CityRepository(Class<City> classInfo, DataSource dataSource) {
+    public CityRepositoryImpl(Class<City> classInfo, DataSource dataSource) {
         super(classInfo, dataSource);
     }
 

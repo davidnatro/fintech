@@ -1,7 +1,7 @@
 package com.fintech.fintech.controller;
 
 import com.fintech.fintech.data.entity.City;
-import com.fintech.fintech.data.repository.jdbc.impl.CityRepository;
+import com.fintech.fintech.data.repository.jdbc.impl.CityRepositoryImpl;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("weather")
-public class WeatherController {
+@RequestMapping("jdbc/weather")
+public class JdbcWeatherController {
 
-    private final CityRepository cityRepository;
+    private final CityRepositoryImpl cityRepository;
 
     @GetMapping
     public ResponseEntity<List<City>> getCities() {

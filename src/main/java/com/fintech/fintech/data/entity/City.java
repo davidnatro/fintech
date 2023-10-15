@@ -31,7 +31,7 @@ public class City {
 
     @ManyToMany
     @JoinTable(name = "city_weather",
-            joinColumns = @JoinColumn(referencedColumnName = "city_id"),
-            inverseJoinColumns = @JoinColumn(referencedColumnName = "weather_id"))
+            joinColumns = @JoinColumn(name = "city_id"),
+            inverseJoinColumns = @JoinColumn(name=  "weather_id"))
     private List<Weather> weathers = new LinkedList<>();
 }

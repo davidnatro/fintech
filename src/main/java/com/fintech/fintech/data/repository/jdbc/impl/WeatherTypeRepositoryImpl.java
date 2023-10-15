@@ -10,9 +10,9 @@ import javax.sql.DataSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class WeatherTypeRepository extends CrudRepository<WeatherType, Long> {
+public class WeatherTypeRepositoryImpl extends CrudRepository<WeatherType, Long> {
 
-    public WeatherTypeRepository(Class<WeatherType> classInfo, DataSource dataSource) {
+    public WeatherTypeRepositoryImpl(Class<WeatherType> classInfo, DataSource dataSource) {
         super(classInfo, dataSource);
     }
 
