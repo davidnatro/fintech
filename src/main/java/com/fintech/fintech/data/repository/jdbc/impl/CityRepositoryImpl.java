@@ -2,7 +2,6 @@ package com.fintech.fintech.data.repository.jdbc.impl;
 
 import com.fintech.fintech.data.entity.City;
 import com.fintech.fintech.data.entity.Weather;
-import com.fintech.fintech.data.entity.WeatherType;
 import com.fintech.fintech.data.enums.TemperatureScale;
 import com.fintech.fintech.data.repository.jdbc.CrudRepository;
 import java.sql.Connection;
@@ -10,7 +9,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
-import java.util.LinkedList;
 import javax.sql.DataSource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
@@ -42,12 +40,12 @@ public class CityRepositoryImpl extends CrudRepository<City, Long> {
 
     @Override
     protected City mapFromResultSet(ResultSet resultSet) throws SQLException {
-        return new City(resultSet.getLong("id"), resultSet.getString("name"), new LinkedList<>());
+        return new City(resultSet.getLong("id"), resultSet.getString("name"), null);
     }
 
     private Weather mapWeatherFromResultSet(ResultSet resultSet) throws SQLException {
         return new Weather(resultSet.getLong("id"), resultSet.getDouble("temperature"),
                            TemperatureScale.valueOf(resultSet.getString("scale")),
-                           ZonedDateTime.parse(resultSet.getString("datetime")), new WeatherType());
+                           ZonedDateTime.parse(resultSet.getString("datetime")), null);
     }
 }
