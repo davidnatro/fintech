@@ -57,7 +57,6 @@ public class JdbcCityDataComponentImpl implements JdbcDataComponent<City, Long> 
     }
 
     @Override
-    @Transactional
     public void deleteById(Long id) {
         cityRepository.deleteById(id);
     }

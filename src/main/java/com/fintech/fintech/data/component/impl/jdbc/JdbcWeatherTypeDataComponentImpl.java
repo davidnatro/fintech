@@ -57,7 +57,6 @@ public class JdbcWeatherTypeDataComponentImpl implements JdbcDataComponent<Weath
     }
 
     @Override
-    @Transactional
     public void deleteById(Long id) {
         weatherTypeRepository.deleteById(id);
     }
