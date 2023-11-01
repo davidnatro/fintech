@@ -64,10 +64,19 @@ public abstract class CrudRepository<T, ID> {
 
     public void deleteById(ID id) {
         try (Connection connection = dataSource.getConnection()) {
+            connection.setAutoCommit(false);
             final String deleteByIdQuery = "DELETE FROM " + tableReference + " WHERE id=?";
-            PreparedStatement statement = connection.prepareStatement(deleteByIdQuery);
-            statement.setString(1, id.toString());
-            statement.execute();
+
+            try {
+                PreparedStatement statement = connection.prepareStatement(deleteByIdQuery);
+                statement.setString(1, id.toString());
+                statement.execute();
+                connection.commit();
+                log.info("transaction completed successfully");
+            } catch (SQLException exception) {
+                log.error("transaction failed -> message: '{}'", exception.getMessage());
+                connection.rollback();
+            }
         } catch (SQLException exception) {
             log.error("cannot perform delete by id operation -> message: '{}'",
                       exception.getMessage());
