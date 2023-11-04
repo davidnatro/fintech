@@ -7,5 +7,6 @@
   <include file="city-weather-tables.xml" relativeToChangelogFile="true"/>
   <include file="data-filling.xml" relativeToChangelogFile="true"/>
   <include file="indexes.xml" relativeToChangelogFile="true"/>
+  <include file="users-roles.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
