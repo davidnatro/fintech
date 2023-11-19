@@ -24,6 +24,10 @@ spring:
     password: ${spring.datasource.password}
     default-schema: ${spring.datasource.hikari.schema}
 
+cache:
+  course:
+    size: 10 # максимальное количество элементов в кэше
+
 springdoc:
   swagger-ui:
     path: swagger.html
