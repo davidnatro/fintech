@@ -13,6 +13,12 @@ public class WeatherCache<K, V> extends LinkedHashMap<K, V> {
     }
 
     @Override
+    public V put(K key, V value) {
+        super.remove(key);
+        return super.put(key, value);
+    }
+
+    @Override
     protected boolean removeEldestEntry(Entry<K, V> eldest) {
         return size() >= cacheProperty.getSize();
     }
