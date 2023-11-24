@@ -8,7 +8,7 @@ spring:
     name: weather-application
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:file:./db;INIT=CREATE SCHEMA IF NOT EXISTS weather;DATABASE_TO_LOWER=true;
+    url: jdbc:h2:mem:db;INIT=CREATE SCHEMA IF NOT EXISTS weather;DATABASE_TO_LOWER=true;
     username: h2
     password: h2
     hikari:
@@ -23,20 +23,3 @@ spring:
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     default-schema: ${spring.datasource.hikari.schema}
-
-cache:
-  course:
-    size: 10 # максимальное количество элементов в кэше
-
-springdoc:
-  swagger-ui:
-    path: swagger.html
-
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health, prometheus
-  server:
-    port: 8081
