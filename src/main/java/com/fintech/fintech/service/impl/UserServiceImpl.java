@@ -1,7 +1,7 @@
 package com.fintech.fintech.service.impl;
 
-import com.fintech.fintech.data.dto.UserDto;
-import com.fintech.fintech.data.dto.UserUpdateDto;
+import com.fintech.fintech.data.dto.rest.UserDto;
+import com.fintech.fintech.data.dto.rest.UserUpdateDto;
 import com.fintech.fintech.data.entity.Role;
 import com.fintech.fintech.data.entity.User;
 import com.fintech.fintech.data.model.UserModel;
@@ -16,9 +16,7 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.boot.actuate.web.exchanges.HttpExchange.Principal;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
