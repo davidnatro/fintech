@@ -26,7 +26,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "usersh2", schema = "weather")
+@Table(name = "usersh2")
 public class User implements UserDetails {
 
     @Id
