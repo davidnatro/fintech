@@ -1,7 +1,7 @@
 package com.fintech.fintech.controller;
 
-import com.fintech.fintech.data.dto.RoleDto;
-import com.fintech.fintech.data.dto.RoleUpdateDto;
+import com.fintech.fintech.data.dto.rest.RoleDto;
+import com.fintech.fintech.data.dto.rest.RoleUpdateDto;
 import com.fintech.fintech.data.model.RoleModel;
 import com.fintech.fintech.service.RoleService;
 import jakarta.validation.Valid;

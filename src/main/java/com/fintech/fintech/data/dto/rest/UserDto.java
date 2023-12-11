@@ -1,4 +1,4 @@
-package com.fintech.fintech.data.dto;
+package com.fintech.fintech.data.dto.rest;
 
 import jakarta.validation.constraints.NotBlank;
 import java.util.List;
