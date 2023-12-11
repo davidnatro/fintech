@@ -1,7 +1,7 @@
 package com.fintech.fintech.service.impl;
 
-import com.fintech.fintech.data.dto.UserDto;
-import com.fintech.fintech.data.dto.UserUpdateDto;
+import com.fintech.fintech.data.dto.rest.UserDto;
+import com.fintech.fintech.data.dto.rest.UserUpdateDto;
 import com.fintech.fintech.data.entity.Role;
 import com.fintech.fintech.data.entity.User;
 import com.fintech.fintech.data.model.UserModel;

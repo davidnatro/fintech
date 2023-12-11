@@ -23,6 +23,43 @@ spring:
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     default-schema: ${spring.datasource.hikari.schema}
+  kafka:
+    consumer:
+      topic: weather
+      auto-offset-reset: earliest
+      bootstrap-servers: localhost:29092
+      group-id: kafka
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.fintech.fintech.data.model
+    producer:
+      acks: -1
+      bootstrap-servers: localhost:29092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+
+application:
+  weather-api:
+    base-url: http://api.weatherapi.com/v1
+    current-weather-uri: /current.json?lang={language}&q={city}&key={key}
+    api-key: ${api.key}
+    default-language: ru
+  weather:
+    moscow:
+      cron: '* */15 * * * *'
+    saint-petersburg:
+      cron: '* */16 * * * *'
+    kazan:
+      cron: '* */17 * * * *'
+    sochi:
+      cron: '* */18 * * * *'
+    krasnodar:
+      cron: '* */19 * * * *'
 
 cache:
   course:

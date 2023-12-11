@@ -1,7 +1,7 @@
 package com.fintech.fintech.service;
 
-import com.fintech.fintech.data.dto.RoleDto;
-import com.fintech.fintech.data.dto.RoleUpdateDto;
+import com.fintech.fintech.data.dto.rest.RoleDto;
+import com.fintech.fintech.data.dto.rest.RoleUpdateDto;
 import com.fintech.fintech.data.model.RoleModel;
 import java.util.List;
 

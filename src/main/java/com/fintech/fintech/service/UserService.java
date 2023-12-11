@@ -1,7 +1,7 @@
 package com.fintech.fintech.service;
 
-import com.fintech.fintech.data.dto.UserDto;
-import com.fintech.fintech.data.dto.UserUpdateDto;
+import com.fintech.fintech.data.dto.rest.UserDto;
+import com.fintech.fintech.data.dto.rest.UserUpdateDto;
 import com.fintech.fintech.data.model.UserModel;
 import java.util.List;
 import org.springframework.boot.actuate.web.exchanges.HttpExchange.Principal;

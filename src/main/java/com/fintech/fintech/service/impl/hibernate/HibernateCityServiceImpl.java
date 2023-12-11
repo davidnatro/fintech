@@ -15,43 +15,43 @@ import org.springframework.stereotype.Service;
 @Service
 public class HibernateCityServiceImpl implements HibernateCrudService<City, Long> {
 
-    private final Map<Long, City> weatherCache;
-    private final HibernateDataComponent<City, Long> cityDataComponent;
+  private final Map<Long, City> weatherCache;
+  private final HibernateDataComponent<City, Long> cityDataComponent;
 
-    public HibernateCityServiceImpl(CacheProperty cacheProperty,
-                                    HibernateDataComponent<City, Long> cityDataComponent) {
-        this.cityDataComponent = cityDataComponent;
-        this.weatherCache = Collections.synchronizedMap(new WeatherCache<>(cacheProperty));
+  public HibernateCityServiceImpl(CacheProperty cacheProperty,
+                                  HibernateDataComponent<City, Long> cityDataComponent) {
+    this.cityDataComponent = cityDataComponent;
+    this.weatherCache = WeatherCache.getInstance(cacheProperty);
+  }
+
+  @Override
+  public List<City> findAll() {
+    return cityDataComponent.findAll();
+  }
+
+  @Override
+  public City findById(Long id) {
+    if (weatherCache.containsKey(id)) {
+      return weatherCache.get(id);
     }
 
-    @Override
-    public List<City> findAll() {
-        return cityDataComponent.findAll();
-    }
+    City city = cityDataComponent.findById(id);
+    weatherCache.put(city.getId(), city);
+    return city;
+  }
 
-    @Override
-    public City findById(Long id) {
-        if (weatherCache.containsKey(id)) {
-            return weatherCache.get(id);
-        }
+  @Override
+  public void create(City object) {
+    cityDataComponent.create(object);
+  }
 
-        City city = cityDataComponent.findById(id);
-        weatherCache.put(city.getId(), city);
-        return city;
-    }
+  @Override
+  public void update(Long id, City object) {
+    cityDataComponent.update(id, object);
+  }
 
-    @Override
-    public void create(City object) {
-        cityDataComponent.create(object);
-    }
-
-    @Override
-    public void update(Long id, City object) {
-        cityDataComponent.update(id, object);
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        cityDataComponent.deleteById(id);
-    }
+  @Override
+  public void deleteById(Long id) {
+    cityDataComponent.deleteById(id);
+  }
 }

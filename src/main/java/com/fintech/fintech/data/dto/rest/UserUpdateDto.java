@@ -1,4 +1,4 @@
-package com.fintech.fintech.data.dto;
+package com.fintech.fintech.data.dto.rest;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
