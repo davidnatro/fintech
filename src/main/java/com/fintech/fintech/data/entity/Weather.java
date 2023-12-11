@@ -2,6 +2,7 @@ package com.fintech.fintech.data.entity;
 
 import com.fintech.fintech.annotation.Table;
 import com.fintech.fintech.data.enums.TemperatureScale;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -21,22 +22,23 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "weather", schema = "weather")
-@jakarta.persistence.Table(name = "weather", schema = "weather")
+@Table(name = "weather")
+@jakarta.persistence.Table(name = "weather")
 public class Weather {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private Double temperature;
+  private Double temperature;
 
-    @Enumerated(EnumType.STRING)
-    private TemperatureScale scale;
+  @Enumerated(EnumType.STRING)
+  private TemperatureScale scale;
 
-    private ZonedDateTime dateTime;
+  @Column(name = "datetime")
+  private ZonedDateTime dateTime;
 
-    @ManyToOne
-    @JoinColumn(name = "weather_type_id")
-    private WeatherType type;
+  @ManyToOne
+  @JoinColumn(name = "weather_type_id")
+  private WeatherType type;
 }
