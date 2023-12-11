@@ -21,7 +21,7 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "rolesh2", schema = "weather")
+@Table(name = "rolesh2")
 public class Role {
 
     @Id
