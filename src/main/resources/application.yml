@@ -61,6 +61,10 @@ application:
     krasnodar:
       cron: '* */19 * * * *'
 
+cache:
+  course:
+    size: 10 # максимальное количество элементов в кэше
+
 springdoc:
   swagger-ui:
     path: swagger.html
